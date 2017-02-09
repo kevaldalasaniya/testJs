@@ -9,7 +9,7 @@ function boris_media_group_getSuggestion(id) {
 	var x = document.querySelector('meta[name="keywords"]');
 	var title = document.title.replace(/\u2013|\u2014/g, "-"); 
 	
-	var server = "http://localhost:8080/trafficSharing/getSuggestion?keywords="
+	var server = "http://45.79.71.25:8080/trafficSharing/getSuggestion?keywords="
 			+ escape(x.content)+ "&detail="+escape((title)) + "&id=" + id + "&host=" + escape(window.location.host)
 			+ "&href=" + escape(window.location.href) ;
 	
