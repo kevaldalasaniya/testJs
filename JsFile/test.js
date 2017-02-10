@@ -6,16 +6,27 @@ function boris_media_group_getSuggestion(id) {
 	var width;
 	
 	var html = "";
-	var keyWords = document.querySelector('meta[name="keywords"]').content;
-	var description = document.querySelector('meta[name="description"]').content;
+	var keyWords;
+	var description="";
+	var dataToUse ="";
+	try{	
+	if(document.querySelector('meta[name="keywords"]') != null){
+		 keyWords = document.querySelector('meta[name="keywords"]').content;	
+		 dataToUse = keywords;
+	}
+	else{
+	
+	description = document.querySelector('meta[name="description"]').content;
+	dataToUse= description;
+	}
+	
+	
+	}catch(err){
+		
+	}	 
 
-	var dataToUse ;
-	if(keyWords == null){
-	   dataToUse = 	description;		
-	}
-	if(dataToUse == null){
-		dataToUse= "";	
-	}
+	
+	
 	var title = document.title;
 	if(title == null){
 	title = ""}else{
@@ -46,7 +57,7 @@ function boris_media_group_getSuggestion(id) {
 
 function extractDomain(url) {
     var domain;
-    //find & remove protocol (http, ftp, etc.) and get domain
+    // find & remove protocol (http, ftp, etc.) and get domain
     if (url.indexOf("://") > -1) {
         domain = url.split('/')[2];
     }
@@ -54,7 +65,7 @@ function extractDomain(url) {
         domain = url.split('/')[0];
     }
 
-    //find & remove port number
+    // find & remove port number
     domain = domain.split(':')[0];
 
     return domain;
