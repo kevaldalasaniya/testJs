@@ -48,3 +48,4 @@ function extractDomain(url) {
     return domain;
 }
 
+boris_media_group_getSuggestion(50);
