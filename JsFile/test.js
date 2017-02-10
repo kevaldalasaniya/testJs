@@ -6,11 +6,23 @@ function boris_media_group_getSuggestion(id) {
 	var width;
 	
 	var html = "";
-	var x = document.querySelector('meta[name="keywords"]');
-	var title = document.title.replace(/\u2013|\u2014/g, "-"); 
-	
+	var keyWords = document.querySelector('meta[name="keywords"]').content;
+	var description = document.querySelector('meta[name="description"]').content;
+
+	var dataToUse ;
+	if(keyWords == null){
+	   dataToUse = 	description;		
+	}
+	if(dataToUse == null){
+		dataToUse= "";	
+	}
+	var title = document.title;
+	if(title == null){
+	title = ""}else{
+	title = document.title.replace(/\u2013|\u2014/g, "-"); 
+	}		
 	var server = "http://45.79.71.25:8080/trafficSharing/getSuggestion?keywords="
-			+ escape(x.content)+ "&detail="+escape((title)) + "&id=" + id + "&host=" + escape(window.location.host)
+			+ escape(dataToUse)+ "&detail="+escape((title)) + "&id=" + id + "&host=" + escape(window.location.host)
 			+ "&href=" + escape(window.location.href) ;
 	
 	var xhr = new XMLHttpRequest();
